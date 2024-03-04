@@ -1,4 +1,5 @@
 import { styled } from "@mui/material";
+import { NavLink as LinkComponent } from "react-router-dom";
 
 export const VisuallyHiddenInput = styled("input")({
   border: 0,
@@ -11,3 +12,11 @@ export const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
+
+export const Link = styled(LinkComponent)`
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+`;

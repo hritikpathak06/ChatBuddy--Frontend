@@ -2,8 +2,20 @@ import React from "react";
 import Header from "./Header";
 import { Grid } from "@mui/material";
 import Title from "../shared/Title";
+import ChatList from "../speific/ChatList";
+import { sampleChats } from "../../constants/smapledata";
+import { useParams } from "react-router-dom";
 
 const AppLayout = ({ children }) => {
+  const params = useParams();
+
+  const chatId = params.chatId;
+
+  const handleDeleteChat = (e, _id, groupchat) => {
+    e.preventDefault();
+    console.log("Deleted Chat: ", _id, groupchat);
+  };
+
   return (
     <>
       <Title />
@@ -14,12 +26,23 @@ const AppLayout = ({ children }) => {
           sm={4}
           md={3}
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { xs: "none", sm: "block", border: "1px solid black" },
           }}
           height={"100%"}
-          bgcolor={"primary.main"}
+          // bgcolor={"primary.main"}
         >
-          First
+          <ChatList
+            chats={sampleChats}
+            chatId={chatId}
+            // newMessagesAlert={[
+            //   {
+            //     chatId: {chatId},
+            //     count: 4,
+            //   },
+            // ]}
+            onlineUsers={["1", "2"]}
+            handleDeleteChat={handleDeleteChat}
+          />
         </Grid>
         <Grid
           item
@@ -28,7 +51,8 @@ const AppLayout = ({ children }) => {
           md={5}
           lg={6}
           height={"100%"}
-          bgcolor={"primary.main"}
+          // bgcolor={"primary.main"}
+          // sx={{border:"1px solid black" }}
         >
           {children}
         </Grid>
