@@ -5,16 +5,18 @@ import Title from "../shared/Title";
 import ChatList from "../speific/ChatList";
 import { sampleChats } from "../../constants/smapledata";
 import { useParams } from "react-router-dom";
+import Profile from "../speific/Profile";
 
 const AppLayout = ({ children }) => {
-  const params = useParams();
+  // const params = useParams();
+  const { chatId } = useParams();
+  console.log("Chat Id: ", chatId);
+  // const chatId = params.chatId
 
-  const chatId = params.chatId;
 
-  const handleDeleteChat = (e, _id, groupchat) => {
-    e.preventDefault();
-    console.log("Deleted Chat: ", _id, groupchat);
-  };
+  const handleDeleteChat = (e,_id,groupChat) => {
+        console.log("Deleted")
+  }
 
   return (
     <>
@@ -29,18 +31,10 @@ const AppLayout = ({ children }) => {
             display: { xs: "none", sm: "block", border: "1px solid black" },
           }}
           height={"100%"}
-          // bgcolor={"primary.main"}
         >
           <ChatList
             chats={sampleChats}
             chatId={chatId}
-            // newMessagesAlert={[
-            //   {
-            //     chatId: {chatId},
-            //     count: 4,
-            //   },
-            // ]}
-            onlineUsers={["1", "2"]}
             handleDeleteChat={handleDeleteChat}
           />
         </Grid>
@@ -51,8 +45,6 @@ const AppLayout = ({ children }) => {
           md={5}
           lg={6}
           height={"100%"}
-          // bgcolor={"primary.main"}
-          // sx={{border:"1px solid black" }}
         >
           {children}
         </Grid>
@@ -70,7 +62,7 @@ const AppLayout = ({ children }) => {
             },
           }}
         >
-          Third
+         <Profile/>
         </Grid>
       </Grid>
     </>

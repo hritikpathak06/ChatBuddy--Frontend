@@ -16,11 +16,11 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Suspense fallback={<LayoutLoaders/>}>
+        <Suspense fallback={<LayoutLoaders />}>
           <Routes>
             <Route element={<ProtectRoute user={user} />}>
               <Route path="/" element={<Home />} />
-              <Route path="/chat/:id" element={<Chat />} />
+              <Route path="/chat/:chatId" element={<Chat />} />
               <Route path="/groups" element={<Groups />} />
             </Route>
             <Route

@@ -19,44 +19,42 @@ const ChatItem = ({
       <Link
         to={`/chat/${_id}`}
         onContextMenu={(e) => handleDeleteChat(e, _id, groupChat)}
-        sx={{padding:"10px"}}
+        sx={{padding:0}}
       >
         <div
           style={{
             display: "flex",
             alignItems: "center",
             padding: "1rem",
+            backgroundColor: sameSender ? "black" : "unset",
+            color: sameSender ? "#fff" : "unset",
+            justifyContent: "space-between",
             gap: "1rem",
             position: "relative",
-            background: newMessageAlert ? "#000" : "unset",
-            color: sameSender ? "white" : "unset",
-            borderBottom: "1px solid #f0f0f0",
-            justifyContent: "space-between",
           }}
         >
           {/* Avatar Card */}
-          
           <AvatarCard avatar={avatar}/>
           <Stack>
             <Typography>{name}</Typography>
             {newMessageAlert && (
               <Typography>{newMessageAlert.count} New Message</Typography>
             )}
+            {isOnline && (
+              <Box
+                sx={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  backgroundColor: "green",
+                  position: "absolute",
+                  top: "50%",
+                  right: "1rem",
+                  transform: "translateY(-50%)",
+                }}
+              />
+            )}
           </Stack>
-          {isOnline && (
-            <Box
-              sx={{
-                width: "10px",
-                height: "10px",
-                borderRadius: "50%",
-                backgroundColor: "green",
-                position: "absolute",
-                top: "50%",
-                right: "1rem",
-                transform: "translate(-50%)",
-              }}
-            />
-          )}
         </div>
       </Link>
     </>
